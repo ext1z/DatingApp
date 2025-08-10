@@ -1,6 +1,6 @@
 using System;
 
-namespace API.Entites;
+namespace API.Entities;
 
 public class AppUser
 {

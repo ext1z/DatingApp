@@ -1,7 +1,7 @@
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using API.Data;
-using API.Entites;
+using API.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
