@@ -1,0 +1,16 @@
+<h1 class="text-3xl text-red-500">Dating app</h1>
+
+
+<div class="card bg-base-100 w-1/2 mx-auto p-10 mt-10 shadow-xl">
+    <h3 class="text-3xl text-red-500">Members List</h3>
+    <ul class="list-none">
+        @for (member of members(); track member.id) {
+        <li class="flex items-center gap-4 py-3 border-b">
+            <img src="/city.jpg" alt="user avatar" class="size-12 rounded-box">
+            <div>
+                {{ member.displayName }}
+            </div>
+        </li>
+        }
+    </ul>
+</div>
