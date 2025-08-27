@@ -16,12 +16,12 @@ public class AccountController(AppDbContext context, ITokenService _tokenService
     [HttpPost("register")]
     public async Task<ActionResult<AppUser>> RegisterAsync([FromBody] RegisterDto request)
     {   
-        if(await EmailExistAsync(request.Email, request.UserName)) return BadRequest("User with this email or with this username already exist");
+        if(await EmailExistAsync(request.Email, request.DisplayName)) return BadRequest("User with this email or with this username already exist");
 
         using var hmac = new HMACSHA512();
 
         var user = new AppUser(){
-            DisplayName = request.UserName,
+            DisplayName = request.DisplayName,
             Email = request.Email,
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
             PasswordSalt = hmac.Key
@@ -51,7 +51,7 @@ public class AccountController(AppDbContext context, ITokenService _tokenService
 
         return Ok(new UserDto {
             Id = user.Id,
-            UserName = user.DisplayName,
+            DisplayName = user.DisplayName,
             Email = user.Email,
             Token = _tokenService.CreateToken(user),
         });
